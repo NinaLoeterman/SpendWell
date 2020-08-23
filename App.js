@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
   return (
@@ -9,6 +9,7 @@ export default function App() {
       <Text>Let's win this hackathon</Text>
       <Text>And have a lot of fun!</Text>
       <Button>Click me!</Button>
+      <Button>Don't Click That one, click this one</Button>
       <StatusBar style="auto" />
     </View>
   );
