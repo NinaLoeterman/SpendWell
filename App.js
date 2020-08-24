@@ -60,12 +60,12 @@ export default function App() {
       <Button title="Show modal" onPress={toggleModal} />
       <Modal isVisible={isModalVisible}>
         <View style={{ flex: 1 }}>
-          <Text>I am the modal content!</Text>
+          <Text style={styles.modalContent}>I am the modal content!</Text>
           <Button title="Hide modal" onPress={toggleModal} />
         </View>
       </Modal>
+      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
       <Button title="Pick an image from camera roll" onPress={_pickImage} />
-        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
     </View>
   );
   }
@@ -78,4 +78,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   
   },
+  modalContent: {
+    backgroundColor: 'white',
+    height: '90%'
+  }
 });
