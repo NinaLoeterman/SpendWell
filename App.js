@@ -45,7 +45,7 @@ export default function App() {
   }
 
   const handlePress = () => {
-    alert("you pressed!");
+    alert("Nina's change Muahaha!");
   }
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
