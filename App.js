@@ -8,7 +8,7 @@ import * as Permissions from "expo-permissions";
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
 import ProductsList from "./components/ProductsList";
-
+import {PostBarcode} from './lib/api';
 import Spinner from "react-native-loading-spinner-overlay";
 import Navbar from "./components/Navbar/navbar.jsx";
 import { Ionicons } from "@expo/vector-icons";
@@ -30,7 +30,15 @@ export default function App() {
       }
     }
   };
-
+  // const testApi = () => {
+  //   const example = {
+  //     "barcode": 234362,
+  //     "brand": "nesle",
+  //     "name": "chocolate milk",
+  //     "description": "very tasty"
+  //   }
+  //   PostBarcode(example);
+  // }
   const _pickImage = async () => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -77,6 +85,7 @@ export default function App() {
         <View style={styles.barcodeOuterContainer}>
         <View style={styles.barcodeContainer}>
           <Ionicons
+          // onPress={testApi}
             onPress={_pickImage}
             style={styles.barcodeButton}
             name="ios-barcode"
