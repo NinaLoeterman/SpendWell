@@ -8,7 +8,7 @@ import * as Permissions from "expo-permissions";
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
 import ProductsList from "./components/ProductsList";
-import {PostBarcode} from './lib/api';
+import { PostBarcode } from './lib/api';
 import Spinner from "react-native-loading-spinner-overlay";
 import Navbar from "./components/Navbar/navbar.jsx";
 import { Ionicons } from "@expo/vector-icons";
