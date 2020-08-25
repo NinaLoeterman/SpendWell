@@ -8,6 +8,7 @@ import * as Permissions from "expo-permissions";
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
 import Spinner from 'react-native-loading-spinner-overlay';
+import Navbar from './components/Navbar/navbar.jsx'
 
 
 export default function App() {
@@ -57,6 +58,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Navbar />
       <Text>Open up App.js to start working on your app!</Text>
       <Text>And have a lot of fun!</Text>
       <Button onPress={() => handlePress()} title="click me" />
