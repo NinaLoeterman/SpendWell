@@ -2,9 +2,17 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< HEAD
   "packagerPid": 58179,
   "expoServerNgrokUrl": "https://fg-8bi.anonymous.spendwell.exp.direct",
   "packagerNgrokUrl": "https://packager.fg-8bi.anonymous.spendwell.exp.direct",
   "ngrokPid": 59721,
   "webpackServerPort": 19006
+=======
+  "packagerPid": 47422,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
+>>>>>>> 7947587b7dd35c15021d54881377d2a25ca397c4
 }
