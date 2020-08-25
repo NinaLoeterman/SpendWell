@@ -7,6 +7,7 @@ import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
+import ProductsList from "./components/ProductsList";
 
 
 export default function App() {
@@ -45,11 +46,7 @@ export default function App() {
   }
 
   const handlePress = () => {
-<<<<<<< HEAD
-    alert("Leigh's change!");
-=======
     alert("Nina's change Muahaha!");
->>>>>>> master
   }
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -64,8 +61,8 @@ export default function App() {
       <Button title="Show modal" onPress={toggleModal} />
       <Modal isVisible={isModalVisible}>
         <View style={{ flex: 1 }}>
-          <Text style={styles.modalContent}>I am the modal content!</Text>
-          <Button title="Hide modal" onPress={toggleModal} />
+          <ProductsList/>
+          <Button color="white" title="X" onPress={toggleModal} />
         </View>
       </Modal>
       {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
@@ -83,7 +80,7 @@ const styles = StyleSheet.create({
   
   },
   modalContent: {
-    backgroundColor: 'white',
+    backgroundColor: 'blue',
     height: '90%'
-  }
+  },
 });
