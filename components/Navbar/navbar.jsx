@@ -8,9 +8,14 @@ const Navbar = () => {
     <View style={styles.navbar}>
       <Image
         style={styles.image}
-        source={require("../../pics/SpendWell.png")}
+        source={require("../../pics/SpendWellGreen.png")}
       />
-      <Ionicons style={styles.hamburger} name="md-menu" size={32} color="#ee4360" />
+      <Ionicons
+        style={styles.hamburger}
+        name="md-menu"
+        size={32}
+        color="#14aa6b"
+      />
     </View>
   );
 };
@@ -24,12 +29,14 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#D8DEE9",
+    backgroundColor: "#fff",
     height: 90,
+    borderBottomColor: "lightgrey",
+    borderBottomWidth: 1,
   },
   hamburger: {
     padding: 30,
-  }
+  },
 });
 
 export default Navbar;

@@ -7,14 +7,14 @@ import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
-import Spinner from 'react-native-loading-spinner-overlay';
-import Navbar from './components/Navbar/navbar.jsx'
-
+import Spinner from "react-native-loading-spinner-overlay";
+import Navbar from "./components/Navbar/navbar.jsx";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function App() {
   const [image, setImage] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [spinner, setSpinner] = useState(false)
+  const [spinner, setSpinner] = useState(false);
 
   useEffect(() => {
     getPermissionAsync();
@@ -48,9 +48,6 @@ export default function App() {
     }
   };
 
-  const handlePress = () => {
-    alert("Nina's change Muahaha!");
-  }
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
@@ -58,26 +55,35 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Navbar />
-      <Button onPress={() => handlePress()} title="click me" />
       <StatusBar style="auto" />
-      <Button title="Show modal" onPress={toggleModal} />
       <Modal isVisible={isModalVisible}>
         <View style={{ flex: 1 }}>
-        <Spinner
-          visible={spinner}
-          textContent={'Loading healthier products:)'}
-          textStyle={styles.spinnerTextStyle}
-        />
+          <Spinner
+            visible={spinner}
+            textContent={"Loading healthier products:)"}
+            textStyle={styles.spinnerTextStyle}
+          />
           <Text style={styles.modalContent}>I am the modal content!</Text>
-          {/* <DoubleBounce size={10} color="#1CAFF6" /> */}
-
           <Button title="Hide modal" onPress={toggleModal} />
         </View>
       </Modal>
-      {image && (
-        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-      )}
-      <Button title="Pick an image from camera roll" onPress={_pickImage} />
+      <View style={styles.scanningContainer}>
+        {image && (
+          <Image source={{ uri: image }} style={{ width: 200, height: 200, borderRadius: 10 }} />
+        )}
+        {!image && (<Ionicons name="ios-qr-scanner" color="#89db9b" size={200} />)}
+        <View style={styles.barcodeOuterContainer}>
+        <View style={styles.barcodeContainer}>
+          <Ionicons
+            onPress={_pickImage}
+            style={styles.barcodeButton}
+            name="ios-barcode"
+            size={50}
+            color="#14aa6b"
+          />
+        </View>
+        </View>
+      </View>
     </View>
   );
 }
@@ -85,10 +91,32 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ECEFF4",
+    backgroundColor: "#fff",
   },
   modalContent: {
     backgroundColor: "white",
     height: "90%",
   },
+  barcodeContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#89db9b",
+    borderColor: "white",
+    borderWidth: 1,
+    borderRadius: 20,
+    width: 80,
+    height: 80,
+  },
+  scanningContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    flex: 1,
+    // justifyContent: 'flex-end',
+    marginBottom: 20,
+    marginTop: 50,
+  },
+
 });
