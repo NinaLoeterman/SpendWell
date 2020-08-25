@@ -1,8 +1,16 @@
 {
+<<<<<<< Updated upstream
   "hostType": "localhost",
   "lanType": "ip",
   "dev": true,
   "minify": false,
   "urlRandomness": "fg-8bi",
+=======
+  "hostType": "lan",
+  "lanType": "ip",
+  "dev": true,
+  "minify": false,
+  "urlRandomness": null,
+>>>>>>> Stashed changes
   "https": false
 }

@@ -2,8 +2,13 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< Updated upstream
   "packagerPid": 58179,
   "expoServerNgrokUrl": "https://fg-8bi.anonymous.spendwell.exp.direct",
   "packagerNgrokUrl": "https://packager.fg-8bi.anonymous.spendwell.exp.direct",
   "ngrokPid": 59721
+=======
+  "packagerPid": 86726,
+  "webpackServerPort": 19006
+>>>>>>> Stashed changes
 }
