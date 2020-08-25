@@ -7,6 +7,8 @@ import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
+import ProductsList from "./components/ProductsList";
+
 import Spinner from "react-native-loading-spinner-overlay";
 import Navbar from "./components/Navbar/navbar.jsx";
 import { Ionicons } from "@expo/vector-icons";
@@ -63,8 +65,8 @@ export default function App() {
             textContent={"Loading healthier products:)"}
             textStyle={styles.spinnerTextStyle}
           />
-          <Text style={styles.modalContent}>I am the modal content!</Text>
-          <Button title="Hide modal" onPress={toggleModal} />
+          <ProductsList/>
+          <Button color="white" title="X" onPress={toggleModal} />
         </View>
       </Modal>
       <View style={styles.scanningContainer}>
@@ -108,6 +110,10 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
   },
+  modalContent: {
+    backgroundColor: 'blue',
+    height: '90%'
+  },
   scanningContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -118,5 +124,4 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 50,
   },
-
 });
