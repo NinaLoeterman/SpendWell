@@ -9,12 +9,11 @@ import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
 import Spinner from 'react-native-loading-spinner-overlay';
 
-// import { DoubleBounce } from 'react-native-loader';
 
 export default function App() {
   const [image, setImage] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [spinner, setSpinner] = useState(true)
+  const [spinner, setSpinner] = useState(false)
 
   useEffect(() => {
     getPermissionAsync();
@@ -67,7 +66,7 @@ export default function App() {
         <View style={{ flex: 1 }}>
         <Spinner
           visible={spinner}
-          textContent={'Loading...'}
+          textContent={'Loading healthier products:)'}
           textStyle={styles.spinnerTextStyle}
         />
           <Text style={styles.modalContent}>I am the modal content!</Text>
