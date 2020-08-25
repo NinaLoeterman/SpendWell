@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { AppRegistry, View, Text, Image, StyleSheet } from "react-native";
-import Icon from "react-native-vector-icons/dist/FontAwesome";
+import { View, Image, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 const Navbar = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.navbar}>
       <Image
         style={styles.image}
         source={require("../../pics/SpendWell.png")}
       />
-      <Icon name="rocket" size={30} color="#900" />{" "}
+      <Ionicons name="ios-reorder" size={32} color="black" />
     </View>
   );
 };
@@ -20,6 +20,10 @@ const styles = StyleSheet.create({
     width: 150,
     height: 100,
   },
+  navbar: {
+    display: "flex",
+    flexDirection: "row",
+  }
 });
 
 export default Navbar;

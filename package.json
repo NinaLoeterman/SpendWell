@@ -20,7 +20,9 @@
     "react-native-image-picker": "^2.3.3",
     "react-native-ionicons": "^4.x",
     "react-native-loader": "^1.3.1",
+    "react-native-loading-spinner-overlay": "^1.1.0",
     "react-native-modal": "^11.5.6",
+    "react-native-paper": "^4.0.1",
     "react-native-vector-icons": "^7.0.0",
     "react-native-web": "~0.11.7",
     "react-router-native": "^5.2.0"

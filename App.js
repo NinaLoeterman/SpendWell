@@ -59,8 +59,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Navbar />
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>And have a lot of fun!</Text>
       <Button onPress={() => handlePress()} title="click me" />
       <StatusBar style="auto" />
       <Button title="Show modal" onPress={toggleModal} />
@@ -89,8 +87,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ECEFF4",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   modalContent: {
     backgroundColor: "white",
