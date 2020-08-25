@@ -8,6 +8,7 @@ import * as Permissions from "expo-permissions";
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
 import Spinner from 'react-native-loading-spinner-overlay';
+import Navbar from './components/Navbar/navbar.jsx'
 
 
 export default function App() {
@@ -48,17 +49,15 @@ export default function App() {
   };
 
   const handlePress = () => {
-    alert("Leigh's change!");
-  };
-  
+    alert("Nina's change Muahaha!");
+  }
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Text>And have a lot of fun!</Text>
+      <Navbar />
       <Button onPress={() => handlePress()} title="click me" />
       <StatusBar style="auto" />
       <Button title="Show modal" onPress={toggleModal} />
@@ -87,8 +86,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ECEFF4",
-    alignItems: "center",
-    justifyContent: "center",
   },
   modalContent: {
     backgroundColor: "white",
