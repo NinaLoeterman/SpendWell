@@ -87,8 +87,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ECEFF4",
-    // alignItems: "center",
-    // justifyContent: "center",
   },
   modalContent: {
     backgroundColor: "white",
