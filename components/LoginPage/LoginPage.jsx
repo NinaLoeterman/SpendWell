@@ -27,9 +27,10 @@ export default function LoginPage() {
           value={password}/>
           <TouchableOpacity
           style={styles.newButton}
-          onPress={() => Actions.screen2()}>
-        <Text>Let's scan products!</Text>
-      </TouchableOpacity>
+          onPress={() =>
+            navigation.navigate('ScanBarCode')}>
+          <Text>Let's scan products!</Text>
+        </TouchableOpacity>
         <Text style={styles.title}>or</Text>
         <View style={styles.googleButton}>
           <Button title="Signin with Google"/>
