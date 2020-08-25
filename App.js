@@ -1,31 +1,33 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import * as React from 'react';
-import { Button, Image, View } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import Constants from 'expo-constants';
-import * as Permissions from 'expo-permissions';
+import * as React from "react";
+import { Button, Image, View } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import Constants from "expo-constants";
+import * as Permissions from "expo-permissions";
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
+import Spinner from 'react-native-loading-spinner-overlay';
 
 
 export default function App() {
-  const [image, setImage] = useState(null)
+  const [image, setImage] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [spinner, setSpinner] = useState(false)
 
   useEffect(() => {
     getPermissionAsync();
   }, []);
-  
+
   const getPermissionAsync = async () => {
     if (Constants.platform.ios) {
       const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-      if (status !== 'granted') {
-        alert('Sorry, we need camera roll permissions to make this work!');
+      if (status !== "granted") {
+        alert("Sorry, we need camera roll permissions to make this work!");
       }
     }
   };
-  
+
   const _pickImage = async () => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -36,24 +38,22 @@ export default function App() {
       });
       if (!result.cancelled) {
         setImage(result.uri);
+        toggleModal();
       }
-  
+
       console.log(result);
     } catch (E) {
       console.log(E);
     }
-  }
+  };
 
   const handlePress = () => {
-<<<<<<< HEAD
     alert("Leigh's change!");
-=======
-    alert("Nina's change Muahaha!");
->>>>>>> master
-  }
+  };
+  
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -64,15 +64,24 @@ export default function App() {
       <Button title="Show modal" onPress={toggleModal} />
       <Modal isVisible={isModalVisible}>
         <View style={{ flex: 1 }}>
+        <Spinner
+          visible={spinner}
+          textContent={'Loading healthier products:)'}
+          textStyle={styles.spinnerTextStyle}
+        />
           <Text style={styles.modalContent}>I am the modal content!</Text>
+          {/* <DoubleBounce size={10} color="#1CAFF6" /> */}
+
           <Button title="Hide modal" onPress={toggleModal} />
         </View>
       </Modal>
-      {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+      {image && (
+        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+      )}
       <Button title="Pick an image from camera roll" onPress={_pickImage} />
     </View>
   );
-  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -80,10 +89,9 @@ const styles = StyleSheet.create({
     backgroundColor: "lightblue",
     alignItems: "center",
     justifyContent: "center",
-  
   },
   modalContent: {
-    backgroundColor: 'white',
-    height: '90%'
-  }
+    backgroundColor: "white",
+    height: "90%",
+  },
 });
