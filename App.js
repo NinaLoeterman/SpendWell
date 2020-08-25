@@ -7,11 +7,14 @@ import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import { StyleSheet, Text } from "react-native";
 import Modal from "react-native-modal";
-import { DoubleBounce } from 'react-native-loader';
+import Spinner from 'react-native-loading-spinner-overlay';
+
+// import { DoubleBounce } from 'react-native-loader';
 
 export default function App() {
   const [image, setImage] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [spinner, setSpinner] = useState(true)
 
   useEffect(() => {
     getPermissionAsync();
@@ -48,7 +51,8 @@ export default function App() {
   const handlePress = () => {
     alert("Leigh's change!");
   };
-  }  const toggleModal = () => {
+  
+  const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
 
@@ -61,8 +65,13 @@ export default function App() {
       <Button title="Show modal" onPress={toggleModal} />
       <Modal isVisible={isModalVisible}>
         <View style={{ flex: 1 }}>
+        <Spinner
+          visible={spinner}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+        />
           <Text style={styles.modalContent}>I am the modal content!</Text>
-          <DoubleBounce size={10} color="#1CAFF6" />
+          {/* <DoubleBounce size={10} color="#1CAFF6" /> */}
 
           <Button title="Hide modal" onPress={toggleModal} />
         </View>
