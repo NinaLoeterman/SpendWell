@@ -10,23 +10,25 @@ const Navbar = () => {
         style={styles.image}
         source={require("../../pics/SpendWell.png")}
       />
-      <Ionicons style={styles.hamburger} name="md-menu" size={32} color="black" />
+      <Ionicons style={styles.hamburger} name="md-menu" size={32} color="#ee4360" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   image: {
-    width: 150,
+    width: 170,
     height: 100,
   },
   navbar: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    backgroundColor: "#D8DEE9",
+    height: 90,
   },
   hamburger: {
-    padding: 25,
+    padding: 30,
   }
 });
 
