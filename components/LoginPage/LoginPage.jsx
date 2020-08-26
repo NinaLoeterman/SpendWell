@@ -12,21 +12,21 @@ import {
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-
 export default function LoginPage() {
   const [email, onChangeEmail] = React.useState("email");
   const [password, onChangePassword] = React.useState("password");
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       {/* <View style={styles.circle} /> */}
-      {/* <Image
-        // style={styles.image}
-        source={require("../pics/strawberry.png")}
-      /> */}
+
       <View style={styles.card}>
+        <Image
+          style={styles.strawberry}
+          source={require("/Users/ninaloeterman/ITC/ITC Hackathon 2020/SpendWell/pics/strawberry.png")}
+        />
         <View style={styles.logInSingUp}>
           <Text style={styles.logIn}>Sign In</Text>
           <Text style={styles.signUp}>Create an account</Text>
@@ -35,17 +35,19 @@ export default function LoginPage() {
           style={styles.input}
           onChangeText={(text) => onChangeEmail(text)}
           clearTextOnFocus
-          value={email}
+          placeholder={'email'}
         />
         <TextInput
           style={styles.input}
           onChangeText={(text) => onChangePassword(text)}
           clearTextOnFocus
-          value={password}
+          secureTextEntry={true}
+          placeholder = 'password'
+          // value={password}
         />
         <TouchableOpacity
           style={styles.newButton}
-          onPress={() => navigation.navigate('MainPage')}
+          onPress={() => navigation.navigate("MainPage")}
         >
           <Text>Let's scan products!</Text>
         </TouchableOpacity>
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   card: {
-    backgroundColor: "#FCFEF5",
+    backgroundColor: "#fff",
     width: 350,
     height: 500,
     alignItems: "center",
@@ -103,12 +105,14 @@ const styles = StyleSheet.create({
     textShadowColor: "red",
     textShadowRadius: 1,
     margin: 24,
-    fontSize: 34,
+    fontSize: 30,
   },
   newButton: {
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
+    borderColor: "#89db9b",
+    borderWidth: 1,
     padding: 10,
+    borderRadius: 10,
   },
   googleButton: {
     width: 200,
@@ -119,8 +123,15 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: 250,
-    borderColor: "gray",
-    borderWidth: 1,
+    backgroundColor: "#89db9b",
+
     marginBottom: 10,
+    borderRadius: 5,
+    padding: 10,
+  },
+  strawberry: {
+    height: 100,
+    width: 100,
+    marginBottom: 20,
   },
 });
