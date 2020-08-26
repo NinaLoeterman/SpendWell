@@ -42,14 +42,24 @@ const ProductsList = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.titleBar}>
+                <Image 
+                    style={styles.logo}
+                    source={require("../pics/CroppedSpendWellGreen.png")}
+                    resizeMode='contain'
+                    style={{
+                        height: 30,
+                        marginBottom: 5
+                    }}
+                />
                 <Text style={styles.titleText}>Recommended Alternatives</Text>
             </View>
             {mockProductsData.map(product =>
                 <View key={product.barcode} style={styles.itemContainer}>
+                    {/* <View style={{ display: "flex", flexDirection: "row", }}> */}
                     <Image
-                        style={styles.image}
                         source={{ uri: product.imgUrl }}
-                    />
+                        style={styles.image}
+                        />
                     <View style={styles.productContainer}>
                         <View style={styles.infoContainer}>
                             <Text style={styles.boldText}>{product.name}</Text>
@@ -70,6 +80,7 @@ const ProductsList = (props) => {
                             </View>
                         </View>
                     </View>
+                    {/* </View> */}
 
                     {/* <Text style={styles.ingredients}>Ingredients: {product.ingredients}</Text> */}
                 </View>)}
@@ -83,15 +94,19 @@ const styles = StyleSheet.create({
         height: '90%',
         borderRadius: 20
     },
+    logo: {
+        width: 170,
+        height: 100,
+    },
     itemContainer: {
         display: "flex",
         flexDirection: 'row',
-        marginRight: 20,
-        marginLeft: 20,
-        paddingTop: 20,
-        paddingBottom: 20,
-        borderBottomColor: 'lightgrey',
-        borderBottomWidth: 1,
+        marginVertical: 5,
+        marginHorizontal: 10,
+        padding: 10,
+        // backgroundColor: '#43C95F80',
+        backgroundColor: "rgb(240,240,240)",
+        borderRadius: 20
     },
     infoContainer: {
         display: "flex",
@@ -121,7 +136,7 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         borderRadius: 60 / 2,
-        backgroundColor: "#F5F5F5",
+        backgroundColor: "white",
         color: "#43C95F"
     },
     image: {
@@ -132,10 +147,11 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     ingredients: {
-        backgroundColor: "#C2CBDB",
+        backgroundColor: "#43C95F",
         color: "white",
-        fontSize: 10,
-        padding: 5
+        fontSize: 12,
+        padding: 5,
+        borderRadius: 20,
     },
     smallText: {
         fontSize: 10,
@@ -144,6 +160,8 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 20,
         color: "black",
+        textAlign: "center",
+        // color: "#43C95F",
         fontWeight: "bold",
     },
     boldText: {
@@ -152,6 +170,8 @@ const styles = StyleSheet.create({
     },
     titleBar: {
         padding: 20,
+        display: "flex",
+        alignItems: "center"
     }
 });
 
