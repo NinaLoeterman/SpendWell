@@ -4,22 +4,37 @@ import { useEffect, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
-import { StyleSheet, Text, Button, Image, View } from "react-native";
+import { StyleSheet, Text, Button, Image, View, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 import ProductsList from "../ProductsList";
 import { PostBarcode } from '../../lib/api';
 import Spinner from "react-native-loading-spinner-overlay";
 import Navbar from "../Navbar/navbar";
 import { Ionicons } from "@expo/vector-icons";
+import { Camera } from 'expo-camera';
+import { BarCodeScanner } from 'expo-barcode-scanner';
+
 
 const MainPage = () => {
 const [image, setImage] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [spinner, setSpinner] = useState(false);
+  const [hasPermission, setHasPermission] = useState(null);
+  const [type, setType] = useState(Camera.Constants.Type.back);
 
   useEffect(() => {
-    getPermissionAsync();
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
   }, []);
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
 
   const getPermissionAsync = async () => {
     if (Constants.platform.ios) {
@@ -29,42 +44,18 @@ const [image, setImage] = useState(null);
       }
     }
   };
-  // const testApi = () => {
-  //   const example = {
-  //     "barcode": 234362,
-  //     "brand": "nesle",
-  //     "name": "chocolate milk",
-  //     "description": "very tasty"
-  //   }
-  //   PostBarcode(example);
-  // }
-  const _pickImage = async () => {
-    try {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
-      if (!result.cancelled) {
-        setImage(result.uri);
-        // PostBarcode(number)
-        toggleModal();
-      }
-
-      console.log(result);
-    } catch (E) {
-      console.log(E);
-    }
-  };
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
+  const barCodeScanned = ({data}) => {
+    toggleModal();
+}
 
   return (
     <View style={styles.container}>
       <Navbar />
+      <BarCodeScanner style={styles.camera} onBarCodeScanned = {barCodeScanned} />
       <StatusBar style="auto" />
       <Modal isVisible={isModalVisible}>
         <View style={{ flex: 1 }}>
@@ -81,12 +72,9 @@ const [image, setImage] = useState(null);
         {image && (
           <Image source={{ uri: image }} style={{ width: 200, height: 200, borderRadius: 10 }} />
         )}
-        {!image && (<Ionicons name="ios-qr-scanner" color="#89db9b" size={200} />)}
         <View style={styles.barcodeOuterContainer}>
         <View style={styles.barcodeContainer}>
           <Ionicons
-          // onPress={testApi}
-            onPress={_pickImage}
             style={styles.barcodeButton}
             name="ios-barcode"
             size={50}
@@ -111,7 +99,7 @@ const styles = StyleSheet.create({
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      backgroundColor: "#89db9b",
+    //   backgroundColor: "#89db9b",
       borderColor: "white",
       borderWidth: 1,
       borderRadius: 20,
@@ -131,6 +119,11 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       marginTop: 50,
     },
+    camera: {
+        marginTop: 50,
+        display: 'flex',
+        height: "60%",
+    }
   });
   
  
