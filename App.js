@@ -29,14 +29,10 @@ export default function App() {
           headerShown: false,
         }}
       >
-        {/* <Stack.Screen name="EnterPage" component={EnterPage} /> */}
         <Stack.Screen name="Login" component={isEnter ? EnterPage : LoginPage} />
         <Stack.Screen name="MainPage" component={MainPage} />
       </Stack.Navigator>
     </NavigationContainer>
-    // <View style={styles.container}>
-    //   {/* <MainPage /> */}
-    // </View>
   );
 }
 
