@@ -49,48 +49,17 @@ const [image, setImage] = useState(null);
   const productBarcode = {
     "barcode": 1938067,
   }
-  
-  // const testApi = () => {
-  //   const example = {
-  //     "barcode": 234362,
-  //     "brand": "nesle",
-  //     "name": "chocolate milk",
-  //     "description": "very tasty"
-  //   }
-  //   PostBarcode(example);
-  // }
-  
-  const _pickImage = async () => {
-    try {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
-      if (!result.cancelled) {
-        setImage(result.uri);
-        PostBarcode(productBarcode)
-        .then((res) => {
-          console.log(res.data);
-          setProductsData(res.data);
-          console.log(productsData)
-        })
-        .catch((err) => console.log("There was a problem sending the product data", err));
-
-        toggleModal();
-      }
-
-      console.log(result);
-    } catch (E) {
-      console.log(E);
-    }
-  };
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
   const barCodeScanned = ({data}) => {
+    PostBarcode(productBarcode).then((res) => {
+        console.log(res.data);
+        setProductsData(res.data);
+        console.log(productsData)
+      })
+      .catch((err) => console.log("There was a problem sending the product data", err));
     toggleModal();
 }
 

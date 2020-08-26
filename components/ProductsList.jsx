@@ -79,16 +79,10 @@ const ProductsList = (props) => {
                 <View key={product.barcode} style={styles.itemContainer}>
                     {/* <View style={{ display: "flex", flexDirection: "row", }}> */}
                     <Image
-<<<<<<< HEAD
-                        source={{ uri: product.imgUrl }}
-                        style={styles.image}
-                        />
-=======
                         style={styles.image}
                         source={{ uri: getImgUrl(product.barcode) }}
                         // source={{ uri: product.imageUrl }}
                     />
->>>>>>> get-data
                     <View style={styles.productContainer}>
                         <View style={styles.infoContainer}>
                             <Text style={styles.boldText}>{product.name}</Text>
@@ -119,8 +113,9 @@ const ProductsList = (props) => {
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 20,
         backgroundColor: "white",
-        height: '90%',
+        height: '85%',
         borderRadius: 20
     },
     logo: {
