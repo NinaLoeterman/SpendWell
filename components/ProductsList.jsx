@@ -42,15 +42,24 @@ const ProductsList = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.titleBar}>
+                <Image 
+                    style={styles.logo}
+                    source={require("../pics/CroppedSpendWellGreen.png")}
+                    resizeMode='contain'
+                    style={{
+                        height: 30,
+                        marginBottom: 5
+                    }}
+                />
                 <Text style={styles.titleText}>Recommended Alternatives</Text>
             </View>
             {mockProductsData.map(product =>
                 <View key={product.barcode} style={styles.itemContainer}>
                     {/* <View style={{ display: "flex", flexDirection: "row", }}> */}
                     <Image
-                        style={styles.image}
                         source={{ uri: product.imgUrl }}
-                    />
+                        style={styles.image}
+                        />
                     <View style={styles.productContainer}>
                         <View style={styles.infoContainer}>
                             <Text style={styles.boldText}>{product.name}</Text>
@@ -84,6 +93,10 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         height: '90%',
         borderRadius: 20
+    },
+    logo: {
+        width: 170,
+        height: 100,
     },
     itemContainer: {
         display: "flex",
@@ -157,6 +170,8 @@ const styles = StyleSheet.create({
     },
     titleBar: {
         padding: 20,
+        display: "flex",
+        alignItems: "center"
     }
 });
 
