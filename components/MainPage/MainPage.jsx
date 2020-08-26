@@ -16,6 +16,7 @@ const MainPage = () => {
 const [image, setImage] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [spinner, setSpinner] = useState(false);
+  const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
     getPermissionAsync();
@@ -29,6 +30,33 @@ const [image, setImage] = useState(null);
       }
     }
   };
+
+  const productOne = {
+    "barcode": 78742432885,
+  }
+  const productTwo = {
+    "barcode": 36800318526,
+  }
+  const productThree = {
+    "barcode": 76983400182,
+  }
+
+  const productFour = {
+    "barcode": 1938067,
+  }
+
+  // const productFour = {
+  //   "barcode": 78742155500,
+  // }
+
+  // const productFour = {
+  //   "barcode": 98487300164,
+  // }
+
+  // const productFour = {
+  //   "barcode": 78742119243,
+  // }
+  
   // const testApi = () => {
   //   const example = {
   //     "barcode": 234362,
@@ -38,6 +66,7 @@ const [image, setImage] = useState(null);
   //   }
   //   PostBarcode(example);
   // }
+  
   const _pickImage = async () => {
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -48,6 +77,14 @@ const [image, setImage] = useState(null);
       });
       if (!result.cancelled) {
         setImage(result.uri);
+        PostBarcode(productFour)
+        .then((res) => {
+          console.log(res.data);
+          setProductsData(res.data);
+          console.log(productsData)
+        })
+        .catch((err) => console.log("There was a problem sending the product data", err));
+
         toggleModal();
       }
 
@@ -72,7 +109,7 @@ const [image, setImage] = useState(null);
             textContent={"Loading healthier products:)"}
             textStyle={styles.spinnerTextStyle}
           />
-          <ProductsList/>
+          <ProductsList productsData={productsData}/>
           <Button color="white" title="X" onPress={toggleModal} />
         </View>
       </Modal>
