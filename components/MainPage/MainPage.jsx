@@ -31,31 +31,9 @@ const [image, setImage] = useState(null);
     }
   };
 
-  const productOne = {
-    "barcode": 78742432885,
-  }
-  const productTwo = {
-    "barcode": 36800318526,
-  }
-  const productThree = {
-    "barcode": 76983400182,
-  }
-
-  const productFour = {
+  const productBarcode = {
     "barcode": 1938067,
   }
-
-  // const productFour = {
-  //   "barcode": 78742155500,
-  // }
-
-  // const productFour = {
-  //   "barcode": 98487300164,
-  // }
-
-  // const productFour = {
-  //   "barcode": 78742119243,
-  // }
   
   // const testApi = () => {
   //   const example = {
@@ -77,7 +55,7 @@ const [image, setImage] = useState(null);
       });
       if (!result.cancelled) {
         setImage(result.uri);
-        PostBarcode(productFour)
+        PostBarcode(productBarcode)
         .then((res) => {
           console.log(res.data);
           setProductsData(res.data);
