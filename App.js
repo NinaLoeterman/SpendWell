@@ -8,6 +8,7 @@ import "react-native-gesture-handler";
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import EnterPage from './components/EnterPage/EnterPage.jsx'
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ export default function App() {
       >
         <Stack.Screen name="Login" component={LoginPage} />
         <Stack.Screen name="MainPage" component={MainPage} />
+        <Stack.Screen name="EnterPage" component={EnterPage} />
       </Stack.Navigator>
     </NavigationContainer>
     // <View style={styles.container}>
