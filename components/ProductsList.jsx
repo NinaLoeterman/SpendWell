@@ -38,6 +38,28 @@ const mockProductsData = [
     },
 ]
 
+const calcImprovement = (input, recommended) => {
+    const improvement = (recommended - input) / input;
+    const improvementPercentage = Math.floor(improvement * 100);
+    return improvementPercentage;
+}
+
+const getPrice = (min, max) => {
+    let productPrice;
+    productPrice = Math.floor(Math.random() * (max - min) + min);
+    return productPrice;
+}
+
+const getImgUrl = (prodBarcode) => {
+    if (prodBarcode === 73410135471) {
+        return "https://images-na.ssl-images-amazon.com/images/I/81-2VdnKTNL._SL1500_.jpg";
+    } else if (prodBarcode === 75925401294) {
+        return "https://d2d8wwwkmhfcva.cloudfront.net/800x/d2lnr5mha7bycj.cloudfront.net/product-image/file/large_af0b2c81-4522-45e4-8554-c45c7e7bf8ab.png";
+    } else {
+        return "https://dks22p812qygs.cloudfront.net/UserFiles/ib_product/Silver-Hills-Sprouted-Organic-Ancient-Grains-The-Queen-s-Khorasan-Loaf-510G-190x190.jpg";
+    }
+}
+
 const ProductsList = (props) => {
     return (
         <View style={styles.container}>
@@ -53,29 +75,36 @@ const ProductsList = (props) => {
                 />
                 <Text style={styles.titleText}>Recommended Alternatives</Text>
             </View>
-            {mockProductsData.map(product =>
+            {props.productsData.map(product =>
                 <View key={product.barcode} style={styles.itemContainer}>
                     {/* <View style={{ display: "flex", flexDirection: "row", }}> */}
                     <Image
+<<<<<<< HEAD
                         source={{ uri: product.imgUrl }}
                         style={styles.image}
                         />
+=======
+                        style={styles.image}
+                        source={{ uri: getImgUrl(product.barcode) }}
+                        // source={{ uri: product.imageUrl }}
+                    />
+>>>>>>> get-data
                     <View style={styles.productContainer}>
                         <View style={styles.infoContainer}>
                             <Text style={styles.boldText}>{product.name}</Text>
-                            <Text style={styles.boldText}>${product.price}</Text>
+                            <Text style={styles.boldText}>${getPrice(5, 10)}</Text>
                         </View>
 
                         <Text>{product.brand}</Text>
 
                         <View style={{ display: "flex", flexDirection: "row", marginTop: 10 }}>
                             <View style={styles.scoreContainer}>
-                                <Text style={{ color: "white", fontSize: 20, fontWeight: "bold" }}>{product.nutritionalScore}</Text>
+                                <Text style={{ color: "white", fontSize: 20, fontWeight: "bold" }}>{product.nutriscore_grade.toUpperCase()}</Text>
                                 <Text style={styles.smallText}>Nutrional</Text>
                                 <Text style={styles.smallText}>Score</Text>
                             </View>
                             <View style={styles.improvementContainer}>
-                                <Text style={{ color: "#43C95F", fontSize: 20, fontWeight: "bold" }}>{product.improvement}</Text>
+                                <Text style={{ color: "#43C95F", fontSize: 20, fontWeight: "bold" }}>{calcImprovement(product.before_nutriscore, product.nutriscore)}%</Text>
                                 <Text style={{ color: "#43C95F", fontSize: 10 }}>healthier</Text>
                             </View>
                         </View>
