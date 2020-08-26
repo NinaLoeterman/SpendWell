@@ -1,15 +1,28 @@
 import React from "react";
-import { View, Image } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 
-const EntryPage = () => {
+const EnterPage = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require("../../pics/SpendWellGreen.png")}
+        source={require("../../pics/SpendWellEnter.png")}
       />
     </View>
   );
 };
 
-export default EntryPage;
+const styles = StyleSheet.create({
+  image: {
+    width: 500,
+    height: 500,
+  },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 100,
+  }
+});
+
+export default EnterPage;

@@ -48,6 +48,7 @@ const [image, setImage] = useState(null);
       });
       if (!result.cancelled) {
         setImage(result.uri);
+        // PostBarcode(number)
         toggleModal();
       }
 
